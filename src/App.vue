@@ -1,21 +1,66 @@
-<script setup>
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Hello Vue 3 + Vite" />
+  <div id="app">
+    <nav>
+      <div class="navbar">
+        <ul>
+          <li><a><router-link to="/">Producten</router-link></a></li>
+          <li><a><router-link to="/reserveren">Reserveren</router-link></a></li>
+        </ul>        
+      </div>
+    </nav>
+    <router-view />
+  </div>
 </template>
 
+<script> 
+export default {
+  components:{
+
+  },
+  
+  data(){
+    return{
+        
+    }
+  },
+  computed: {
+
+  },
+  
+}
+</script>
+
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+*{
+  font-family: 'Poppins', sans-serif;
+  margin: 0 0;
+}
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar{
+    flex: 1;
+    text-align: right;
+    position: fixed;
+    top: 5px;
+    left: 10px;
+    z-index: 1000000;
+}
+
+.navbar ul li{
+    list-style: none;
+    display: inline-block;
+    padding: 8px 50px;
+    position: relative;
+}
+
+.navbar ul li a{
+    color: #CF4D36;
+    text-decoration: none;
+    font-size: 35px;
 }
 </style>
