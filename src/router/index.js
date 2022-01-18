@@ -10,11 +10,6 @@ const routes = [
         component: home
     },
     {
-        path: "/reserveren",
-        name: "reserveren",
-        component: reserveren
-    },
-    {
         path: '/:pathMatch(.*)*',
         name: "error",
         component: error

@@ -1,10 +1,9 @@
 <template>
   <div id="app">
     <nav>
-      <div class="navbar">
+      <div class="container">
         <ul>
-          <li><a><router-link to="/">Producten</router-link></a></li>
-          <li><a><router-link to="/reserveren">Reserveren</router-link></a></li>
+          <li><a><router-link to="/">Home</router-link></a></li>
         </ul>        
       </div>
     </nav>
@@ -36,31 +35,41 @@ export default {
   margin: 0 0;
 }
 
-nav{
+.container {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.navbar{
-    flex: 1;
-    text-align: right;
-    position: fixed;
-    top: 5px;
-    left: 10px;
-    z-index: 1000000;
-}
-
-.navbar ul li{
-    list-style: none;
-    display: inline-block;
-    padding: 8px 50px;
+    justify-content: center;
+    width: 15%;
+    height: 100vh;
+    border-right: solid #CF4D36;
     position: relative;
 }
 
-.navbar ul li a{
-    color: #CF4D36;
-    text-decoration: none;
-    font-size: 35px;
+.container ul {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    width: 80%;
+    height: 5%;
+    position: absolute;
+    top: 50vh;
+    padding: 0 0;
+}
+
+.container ul li {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  list-style: none;
+  background-color:#CF4D36;
+}
+
+.container ul li a {
+  display: flex;
+  justify-content: center;
+  color: black;
+  font-style: bold;
+  font-size: 1em;
+  text-decoration: none;
+  margin-top: 4%;
 }
 </style>

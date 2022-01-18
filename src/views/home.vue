@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>home werkt</h1>
+
     </div>
 </template>
 
@@ -23,7 +23,5 @@ export default {
 </script>
 
 <style scoped>
-* {
-    background-color: red;
-}
+
 </style>
