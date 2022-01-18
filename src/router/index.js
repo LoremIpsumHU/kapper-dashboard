@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import home from "../views/home.vue"
-import reserveren from "../views/reserveren.vue"
 import error from "../views/error.vue"
 
 const routes = [
