@@ -1,20 +1,18 @@
 <template>
-  <div id="app">
-    <nav>
-      <div class="container">
-        <ul>
-          <li><a><router-link to="/">Home</router-link></a></li>
-        </ul>        
-      </div>
-    </nav>
-    <router-view />
+  <div id="app" class="row">
+    <sidebar></sidebar>
+    <reserveren></reserveren>
   </div>
 </template>
 
 <script> 
+import reserveren from "./components/reserveren.vue"
+import sidebar from "./components/sidebar.vue"
+
 export default {
   components:{
-
+    reserveren,
+    sidebar,
   },
   
   data(){
@@ -22,10 +20,6 @@ export default {
         
     }
   },
-  computed: {
-
-  },
-  
 }
 </script>
 
@@ -33,43 +27,11 @@ export default {
 *{
   font-family: 'Poppins', sans-serif;
   margin: 0 0;
+  padding: 0 0;
 }
 
-.container {
-    display: flex;
-    justify-content: center;
-    width: 15%;
-    height: 100vh;
-    border-right: solid #CF4D36;
-    position: relative;
-}
-
-.container ul {
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    width: 80%;
-    height: 5%;
-    position: absolute;
-    top: 50vh;
-    padding: 0 0;
-}
-
-.container ul li {
-  width: 100%;
-  height: 100%;
-  border-radius: 10px;
-  list-style: none;
-  background-color:#CF4D36;
-}
-
-.container ul li a {
+.row {
   display: flex;
-  justify-content: center;
-  color: black;
-  font-style: bold;
-  font-size: 1em;
-  text-decoration: none;
-  margin-top: 4%;
+  flex-direction: row;
 }
 </style>
