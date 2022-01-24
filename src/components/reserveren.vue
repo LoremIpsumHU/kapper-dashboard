@@ -9,10 +9,10 @@
         Meer...
       </p>
       <div v-if="expand" class="extra">
-        <p class="bijz">Bijzonderheden: {{ appointment.comment }}</p>
+        <p class="bijz">Bijzonderheden: {{ appointment.comment ? appointment.comment : "Geen bijzonderheden." }}</p>
         <div class="col">
-          <p class="number">{{ appointment.phone }}</p>
-          <p class="email">{{ appointment.email }}</p>
+          <a :href="`tel:${ appointment.phone }`" class="number">{{ appointment.phone ? appointment.phone : "Geen telefoon nummer." }}</a>
+          <a :href="`mailto:${ appointment.email }`" class="email">{{ appointment.email }}</a>
         </div>
         <p @click="expand = !expand" class="unselectable">Minder...</p>
       </div>
@@ -78,5 +78,9 @@ export default {
   display: flex;
   justify-content: center;
   flex-direction: column;
+}
+
+.col a {
+  color: #4a73be;
 }
 </style>
