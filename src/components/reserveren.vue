@@ -4,7 +4,7 @@
       <p class="name">{{ appointment.name }}</p>
       <p>Kapper: {{ appointment.barber_name }}</p>
       <p>{{ formatDate(appointment.start_time) }}</p>
-      <p>Behandeling: {{ appointment.treatment_name }}</p>
+      <p>Behandeling: {{ formatTreatments(appointment.treatments) }}</p>
       <p v-if="!expand" @click="expand = !expand" class="unselectable">
         Meer...
       </p>
@@ -46,6 +46,10 @@ export default {
 
       return [day, month, year].join("-") + " " + [hour, minute].join(":");
     },
+    
+    formatTreatments(treatments) {
+      return treatments.join(', ').replace(/, ([^,]*)$/, ' en $1');
+    },
   },
 };
 </script>
@@ -82,5 +86,6 @@ export default {
 
 .col a {
   color: #4a73be;
+  text-decoration: none;
 }
 </style>

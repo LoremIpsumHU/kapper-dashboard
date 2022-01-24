@@ -31,11 +31,39 @@ export default {
       axios.get(process.env.VUE_APP_ROOT_API)
       .then(res => {
         this.$store.state.data = res.data.data.reverse()
+        this.merge()
       })
       .catch((err) => {
+        console.log(err)
         alert('Er is iets fout gegaan, probeer het later opnieuw.')
       });
-    }
+    },
+
+    merge() {
+      let arr = [];
+      let items = this.$store.state.data
+
+      for (let i in items) {
+          let seen = false;
+          for (let a = 0; a<arr.length; a++) {
+              if (items[i].id === arr[a].id) {
+                  let n = arr[a];
+                  n.treatments.push(items[i].treatment_name);
+                  arr[a] = n;
+                  seen = true;
+              }
+          }
+          
+          if(!seen) {
+            let insertion = items[i];
+            let treat_arr = [items[i].treatment_name];
+            insertion['treatments'] = treat_arr;
+            arr.push(insertion);
+          }
+          
+      }
+      this.$store.state.data = arr
+    },
   },
 };
 </script>
@@ -58,7 +86,7 @@ export default {
   margin-top: 20px;
   margin-bottom: 20px;
   grid-gap: 10px 10px;
-  margin-left: 11vw;
+  margin-left: 14vw;
 }
 
 .fixed {

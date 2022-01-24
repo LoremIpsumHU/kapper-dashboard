@@ -1,7 +1,12 @@
 <template>
   <div class="container">
-    <div class="option">
-      <a href="https://www.youtube.com/watch?v=iik25wqIuFo">Home</a>
+    <div class="img">
+      <img src="../assets/jdklogo.svg" alt="jan de kapper logo">
+    </div>
+    <div class="button">
+      <div class="option">
+        <a>Home</a>
+      </div>
     </div>
   </div>
 </template>
@@ -17,18 +22,21 @@ export default {
 </script>
 
 <style scoped>
-* {
-  margin: 0 0;
-  padding: 0 0;
-}
-
 .container {
   display: flex;
   justify-content: center;
-  align-items: center;
-  width: 10vw;
+  flex-direction: column;
+  width: 13vw;
   height: 100vh;
   border-right: solid #cf4d36;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
 }
 
 .option {
@@ -48,5 +56,15 @@ export default {
   color: white;
   font-size: 1em;
   text-decoration: none;
+}
+
+img {
+  height: 10vh;
+  width: 15vh;
+}
+
+.img {
+  display: flex;
+  justify-content: center;
 }
 </style>
