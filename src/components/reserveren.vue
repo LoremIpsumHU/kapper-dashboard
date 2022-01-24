@@ -1,18 +1,18 @@
 <template>
   <div>
     <div class="container">
-      <p class="name">{{ name }}</p>
-      <p>Kapper: {{ barber_name }}</p>
-      <p>{{ start_time }}</p>
-      <p>{{ treatment_name }}</p>
+      <p class="name">{{ appointment.name }}</p>
+      <p>Kapper: {{ appointment.barber_name }}</p>
+      <p>{{ formatDate(appointment.start_time) }}</p>
+      <p>Behandeling: {{ appointment.treatment_name }}</p>
       <p v-if="!expand" @click="expand = !expand" class="unselectable">
         Meer...
       </p>
       <div v-if="expand" class="extra">
-        <p class="bijz">{{ comment }}</p>
-        <div class="row">
-          <p class="number">{{ phone }}</p>
-          <p class="email">{{ email }}</p>
+        <p class="bijz">Bijzonderheden: {{ appointment.comment }}</p>
+        <div class="col">
+          <p class="number">{{ appointment.phone }}</p>
+          <p class="email">{{ appointment.email }}</p>
         </div>
         <p @click="expand = !expand" class="unselectable">Minder...</p>
       </div>
@@ -24,13 +24,29 @@
 export default {
   components: {},
   data() {
-    return {};
+    return {
+      expand: false,
+    };
   },
-  mounted() {
-    console.log(process.env.ROOT_API);
-  },
+  props: ["appointment"],
 
-  methods: {},
+  methods: {
+    formatDate(date) {
+      var d = new Date(date),
+        month = "" + (d.getMonth() + 1),
+        day = "" + d.getDate(),
+        year = d.getFullYear(),
+        hour = "" + d.getHours(),
+        minute = "" + d.getMinutes();
+
+      if (month.length < 2) month = "0" + month;
+      if (day.length < 2) day = "0" + day;
+      if (hour.length < 2) hour = "0" + hour;
+      if (minute.length < 2) minute = "0" + minute;
+
+      return [day, month, year].join("-") + " " + [hour, minute].join(":");
+    },
+  },
 };
 </script>
 
@@ -38,7 +54,7 @@ export default {
 .container {
   padding: 10px;
   width: 20vw;
-  height: 20vh;
+  height: 25vh;
   background-color: rgb(212, 212, 212);
 }
 
@@ -58,9 +74,9 @@ export default {
   color: #cf4d36;
 }
 
-.row {
+.col {
   display: flex;
-  justify-content: space-evenly;
-  flex-direction: row;
+  justify-content: center;
+  flex-direction: column;
 }
 </style>
