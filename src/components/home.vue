@@ -83,4 +83,19 @@ img {
   height: 9vh;
   margin-bottom: 10px;
 }
+
+@media screen and (max-width:600px) {
+  .welkom {
+    font-size: 1.7em;
+  }
+
+  .center {
+    width: 73vw;
+    margin-left: 27vw;
+  }
+
+  .container {
+    width: 40vw;
+  }
+}
 </style>

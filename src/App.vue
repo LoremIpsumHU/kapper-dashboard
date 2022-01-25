@@ -103,4 +103,12 @@ export default {
 .fixed {
   position: fixed;
 }
+
+@media screen and (max-width:600px) {
+  .grid {
+    grid-template-columns: repeat(1, 1fr);
+    width: 70vw;
+    margin-left: 30vw;
+  }
+}
 </style>
