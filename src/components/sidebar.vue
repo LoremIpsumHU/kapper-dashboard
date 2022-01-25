@@ -79,11 +79,25 @@ export default {
 
 img {
   height: 10vh;
-  width: 15vh;
+  width: 15vw;
 }
 
 .img {
   display: flex;
   justify-content: center;
+}
+
+@media screen and (max-width:600px) {
+  .container {
+    width: 27vw;
+  }
+
+  .option {
+    width: 11ch;
+  }
+
+  .option a {
+    font-size: 0.8em;
+  }
 }
 </style>
