@@ -24,7 +24,7 @@ export default {
     reserveren(event) {
       if (event) event.preventDefault();
 
-      this.$store.commit("subtracked");
+      this.$store.state.step = 1;
     },
 
     hallo() {
