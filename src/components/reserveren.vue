@@ -60,6 +60,7 @@ export default {
   width: 20vw;
   height: 25vh;
   background-color: rgb(241, 241, 241);
+  word-wrap: break-word;
 }
 
 .name {
@@ -87,5 +88,16 @@ export default {
 .col a {
   color: #4a73be;
   text-decoration: none;
+}
+
+@media screen and (max-width:600px) {
+  .name {
+    font-size: 1em;
+  }
+
+  .container {
+    width: 60vw;
+    height: 30vh;
+  }
 }
 </style>
