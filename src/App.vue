@@ -28,7 +28,7 @@ export default {
 
   methods: {
     getData() {
-      axios.get(process.env.VUE_APP_ROOT_API + '/appointments',)
+      axios.get('https://dev-api.jandekapper.nl/appointments',)
       .then(res => {
         this.$store.state.data = res.data.data.reverse()
         this.merge()
