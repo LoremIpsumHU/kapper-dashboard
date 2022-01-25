@@ -31,9 +31,9 @@ export default {
       var data = [
           [22, "Nog laat bezig"],
           [18, "Goedenavond"],
-          [12, "Goedenmiddag"],
-          [5, "Goedenmorgen"],
-          [0, "Goedennacht"],
+          [12, "Goedemiddag"],
+          [5, "Goedemorgen"],
+          [0, "Goedenacht"],
         ],
         hr = new Date().getHours();
       for (var i = 0; i < data.length; i++) {
