@@ -4,13 +4,20 @@ import createPersistedState from "vuex-persistedstate";
 
 const store = createStore({
     state:{
+        data: '',
+        step: 2,
 
     },
     getters:{
 
     },
     mutations:{
-
+        increment (state) {
+            state.step++
+        },
+        subtracked (state) {
+            state.step--
+        },
     },
     actions:{
         

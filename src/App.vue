@@ -1,66 +1,106 @@
 <template>
-  <div id="app">
-    <nav>
-      <div class="navbar">
-        <ul>
-          <li><a><router-link to="/">Producten</router-link></a></li>
-          <li><a><router-link to="/reserveren">Reserveren</router-link></a></li>
-        </ul>        
+  <div id="app" class="row">
+    <sidebar class="fixed"></sidebar>
+    <div>
+      <div class="grid" v-show="step == 1" >
+        <reserveren v-for="id in this.$store.state.data" :appointment="id" v-bind:key="id"></reserveren>        
       </div>
-    </nav>
-    <router-view />
+      <home v-show="step == 2"></home>
+    </div>
   </div>
 </template>
 
-<script> 
-export default {
-  components:{
+<script>
+import reserveren from "./components/reserveren.vue";
+import home from "./components/home.vue"
+import sidebar from "./components/sidebar.vue";
+import axios from 'axios';
 
+export default {
+  components: {
+    reserveren,
+    sidebar,
+    home,
   },
-  
-  data(){
-    return{
-        
+
+  data() {
+    return {
     }
   },
-  computed: {
 
+  beforeMount() {
+      this.getData()
+    },
+
+  computed: {
+    step() {
+      return this.$store.state.step
+    }
   },
-  
-}
+
+  methods: {
+    getData() {
+      axios.get('https://dev-api.jandekapper.nl/appointments',)
+      .then(res => {
+        this.$store.state.data = res.data.data.reverse()
+        this.merge()
+      })
+      .catch((err) => {
+        alert('Er is iets fout gegaan, probeer het later opnieuw.')
+      });
+    },
+
+    merge() {
+      let arr = [];
+      let items = this.$store.state.data
+
+      for (let i in items) {
+          let seen = false;
+          for (let a = 0; a<arr.length; a++) {
+              if (items[i].id === arr[a].id) {
+                  let n = arr[a];
+                  n.treatments.push(items[i].treatment_name);
+                  arr[a] = n;
+                  seen = true;
+              }
+          }
+          
+          if(!seen) {
+            let insertion = items[i];
+            let treat_arr = [items[i].treatment_name];
+            insertion['treatments'] = treat_arr;
+            arr.push(insertion);
+          }
+          
+      }
+      this.$store.state.data = arr
+    },
+  },
+};
 </script>
 
 <style>
-*{
-  font-family: 'Poppins', sans-serif;
+* {
+  font-family: "Poppins", sans-serif;
   margin: 0 0;
+  padding: 0 0;
 }
 
-nav{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.row {
+  display: flex;
+  flex-direction: row;
 }
 
-.navbar{
-    flex: 1;
-    text-align: right;
-    position: fixed;
-    top: 5px;
-    left: 10px;
-    z-index: 1000000;
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: 20px;
+  margin-bottom: 20px;
+  grid-gap: 10px 10px;
+  margin-left: 14vw;
 }
 
-.navbar ul li{
-    list-style: none;
-    display: inline-block;
-    padding: 8px 50px;
-    position: relative;
-}
-
-.navbar ul li a{
-    color: #CF4D36;
-    text-decoration: none;
-    font-size: 35px;
+.fixed {
+  position: fixed;
 }
 </style>
