@@ -23,7 +23,6 @@ export default {
   methods: {
     reserveren(event) {
       if (event) event.preventDefault();
-
       this.$store.state.step = 1;
     },
 
