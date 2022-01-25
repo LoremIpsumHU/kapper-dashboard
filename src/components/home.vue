@@ -23,17 +23,16 @@ export default {
   methods: {
     reserveren(event) {
       if (event) event.preventDefault();
-
-      this.$store.commit("subtracked");
+      this.$store.state.step = 1;
     },
 
     hallo() {
       var data = [
           [22, "Nog laat bezig"],
           [18, "Goedenavond"],
-          [12, "Goedenmiddag"],
-          [5, "Goedenmorgen"],
-          [0, "Goedennacht"],
+          [12, "Goedemiddag"],
+          [5, "Goedemorgen"],
+          [0, "Goedenacht"],
         ],
         hr = new Date().getHours();
       for (var i = 0; i < data.length; i++) {
