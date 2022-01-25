@@ -1,11 +1,14 @@
 <template>
   <div class="container">
     <div class="img">
-      <img src="../assets/jdklogo.svg" alt="jan de kapper logo">
+      <img src="../assets/jdklogo.svg" alt="jan de kapper logo" />
     </div>
     <div class="button">
-      <div class="option">
+      <div class="option" @click="home()">
         <a>Home</a>
+      </div>
+      <div class="option" @click="reserveren()">
+        <a>Reserveringen</a>
       </div>
     </div>
   </div>
@@ -17,6 +20,20 @@ export default {
 
   data() {
     return {};
+  },
+
+  methods: {
+    reserveren(event) {
+      if (event) event.preventDefault();
+
+      this.$store.state.step = 1;
+    },
+
+    home(event) {
+      if (event) event.preventDefault();
+
+      this.$store.state.step = 2;
+    },
   },
 };
 </script>
@@ -35,6 +52,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   width: 100%;
   height: 100vh;
 }
@@ -42,7 +60,8 @@ export default {
 .option {
   width: 80%;
   height: 5%;
-  background-color: #cf4d36;
+  margin-top: 10px;
+  background-color: #cc5c48;
   border-radius: 10px;
   cursor: pointer;
 }

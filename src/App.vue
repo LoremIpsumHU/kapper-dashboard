@@ -1,14 +1,18 @@
 <template>
   <div id="app" class="row">
     <sidebar class="fixed"></sidebar>
-    <div class="grid">
-      <reserveren v-for="id in this.$store.state.data" :appointment="id" v-bind:key="id"></reserveren>
+    <div>
+      <div class="grid" v-show="step == 1" >
+        <reserveren v-for="id in this.$store.state.data" :appointment="id" v-bind:key="id"></reserveren>        
+      </div>
+      <home v-show="step == 2"></home>
     </div>
   </div>
 </template>
 
 <script>
 import reserveren from "./components/reserveren.vue";
+import home from "./components/home.vue"
 import sidebar from "./components/sidebar.vue";
 import axios from 'axios';
 
@@ -16,15 +20,23 @@ export default {
   components: {
     reserveren,
     sidebar,
+    home,
   },
 
   data() {
-    return {}
+    return {
+    }
   },
 
   beforeMount() {
       this.getData()
     },
+
+  computed: {
+    step() {
+      return this.$store.state.step
+    }
+  },
 
   methods: {
     getData() {

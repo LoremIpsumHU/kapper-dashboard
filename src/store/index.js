@@ -4,21 +4,20 @@ import createPersistedState from "vuex-persistedstate";
 
 const store = createStore({
     state:{
-        // name: '',
-        // barber_name: '',
-        // start_time: '',
-        // treatment_name: '',
-        // comment: '',
-        // phone: '',
-        // email: '',
         data: '',
+        step: 2,
 
     },
     getters:{
 
     },
     mutations:{
-
+        increment (state) {
+            state.step++
+        },
+        subtracked (state) {
+            state.step--
+        },
     },
     actions:{
         

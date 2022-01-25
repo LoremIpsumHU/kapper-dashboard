@@ -59,7 +59,7 @@ export default {
   padding: 10px;
   width: 20vw;
   height: 25vh;
-  background-color: rgb(212, 212, 212);
+  background-color: rgb(241, 241, 241);
 }
 
 .name {
