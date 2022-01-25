@@ -28,13 +28,12 @@ export default {
 
   methods: {
     getData() {
-      axios.get(process.env.VUE_APP_ROOT_API)
+      axios.get(process.env.VUE_APP_ROOT_API + '/appointments',)
       .then(res => {
         this.$store.state.data = res.data.data.reverse()
         this.merge()
       })
       .catch((err) => {
-        console.log(err)
         alert('Er is iets fout gegaan, probeer het later opnieuw.')
       });
     },
